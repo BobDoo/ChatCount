@@ -3,55 +3,63 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
+    <title>카톡채팅량 보고서</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
     </script>
     <script src="script.js"></script>
   </head>
   <body>
-    <div class="container">
-      <div id="title">
-        <span class="date"></span> 카톡 채팅량 보고서
+    <div class='container'>
+      <div class="titleItem">
+        <div class="title">카톡 채팅량 보고서</div>
+        <div class="description">
+          친구들과의 단톡방, 누가누가 말이 제일 많을까?
+        </div>
       </div>
-      <br>
-      <table align="center">
-        <tr>
-          <th>이름</th>
-          <th>채팅 수</th>
-          <th>지분율</th>
-        </tr>
-        <tr>
-          <td>박두영</td>
-          <td class="chatDoo"></td>
-          <td class="perDoo"></td>
-        </tr>
-        <tr>
-          <td>박보라</td>
-          <td class="chatBoo"></td>
-          <td class="perBoo"></td>
-        </tr>
-        <tr>
-          <td>박태희</td>
-          <td class="chatTae"></td>
-          <td class="perTae"></td>
-        </tr>
-        <tr>
-          <td>강신웅</td>
-          <td class="chatSin"></td>
-          <td class="perSin"></td>
-        </tr>
-        <tr>
-          <td>합계</td>
-          <td class="tot"></td>
-          <td class="perTot"></td>
-        </tr>
-      </table>
-      <br>
-      <br>
-      <textarea class="chatting" name="" id="" cols="50" rows="10"></textarea>
-      <br>
-      <button class="bring">가져오기</button>
+      <div class="item howto grey">
+        <div class="inner">
+          <span class='title'>이용 방법</span>
+          <ol>
+            <li>카톡 채팅방을 켠다.</li>
+            <li>대화 내용을 마우스 드래그로 선택한다.</li>
+            <li>복사후 대화 내용 영역에 붙여넣는다.</li>
+            <li>가져오기를 클릭한다.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="item txt">
+        <div class="inner">
+          <div class="titleArea">
+            <span class='title'>대화 내용</span>
+            <button class="reset">초기화</button>
+          </div>
+          <textarea class="chatting" rows="10" placeholder="카톡 대화 내용을 붙여넣으세요."></textarea>
+        </div>
+        <button class="bring">카톡 현황 분석하기</button>
+      </div>
+      <div class="item res grey">
+        <div class="inner">
+          <span class="title">분석 결과 보고서</span>
+          <div class="tbArea">
+            <span class="description pholder">
+              분석할 대화 내용이 없습니다.
+            </span>
+            <table align="center" class="resTb hide">
+              <thead>
+                <tr>
+                  <th>순위</th>
+                  <th>이름</th>
+                  <th>채팅 수</th>
+                  <th>지분율</th>
+                </tr>
+              </thead>
+              <tbody class="tb_cont">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

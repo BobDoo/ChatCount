@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  today_date();
 
   $('.bring').click(function(){
     reset();
@@ -10,16 +9,17 @@ $(document).ready(function(){
       var arr=bring_name();
       chat_count(arr);
     }
+    var offset = $('.res').offset();
+	  $('html').animate({scrollTop : offset.top}, 400);
   });
 
   $('.reset').click(function(){
     reset('btn');
   });
-
 })
 
 function reset(txt){
-  $('.tb_cont').html("");
+  $('.tb_cont').children().remove();
   $('.resTb').addClass('hide');
   $('.pholder').removeClass('hide');
   if(txt=='btn'){
@@ -56,31 +56,6 @@ function bring_name(){
     }
   }
   return nameArr;
-}
-
-function today_date(){
-  // 오늘 날짜 가져오기
-  var date=new Date();
-  var month=date.getMonth()+1;
-  var day=date.getDate();
-  var yi=date.getDay();
-
-  // 월요일이면 금요일로 변경, 나머지는 전날로 변경
-  if(yi==1){
-    day=day-3;
-    yi=5;
-  }else{
-    day=day-1;
-    yi=yi-1;
-  }
-
-  // 요일 텍스트로 변환
-  var week=new Array('일', '월', '화', '수', '목', '금', '토');
-  var yiTxt=week[yi];
-
-  // 출력
-  var dayTxt=month+'/'+day+'('+yiTxt+')'
-  $('.date').html(dayTxt);
 }
 
 function chat_count(arr){

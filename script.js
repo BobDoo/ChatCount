@@ -77,31 +77,48 @@ function chat_count(arr){
   var rank=0;
   var rankArr=new Array(resArr.length);
   for(var i=0; i<resArr.length; i++){
+    resArr[i].unshift(-1);
+  }
+  for(var i=0; i<resArr.length; i++){
     rank=0;
+    //console.log(i+': '+resArr[i]);
+
     for(var j=0; j<resArr.length; j++){
-      if(resArr[i][1]<resArr[j][1]) rank++;
+      if(resArr[i][2]<resArr[j][2]) rank++;
     }
     for(var j=0; j<rankArr.length; j++) {
-      if(rankArr[j]==rank) rank++;
+      if(rankArr[j]!=null){
+        if(rankArr[j][0]==rank){
+          rank++;
+          //console.log("i="+i+', rank:'+rank);
+        } 
+      }
     }
-    resArr[i].push((resArr[i][1]/total*100).toFixed(2));
+    resArr[i].push((resArr[i][2]/total*100).toFixed(2));
+    resArr[i][0]=rank;
     rankArr[rank]=resArr[i];
   }
 
+  //console.log('res: ');
+  //console.log(resArr);
+  //console.log('');
+  //console.log('rank: ');
   //console.log(rankArr);
+
   var innerHtml='';
   for(i=0; i<rankArr.length; i++){
     innerHtml='';
     innerHtml+="<tr>";
-    innerHtml+="<td>";
-    innerHtml+=i+1;
-    innerHtml+="</td>";
-      for(j=0; j<rankArr[i].length; j++){
-        innerHtml+="<td>";
+    for(j=0; j<rankArr[i].length; j++){
+      innerHtml+="<td>";
+      if(j==0){
+        innerHtml+=rankArr[i][j]+1;
+      }else{
         innerHtml+=rankArr[i][j];
-        if(j==2) innerHtml+=" %";
-        innerHtml+="</td>";
+        if(j==3) innerHtml+=" %";
       }
+      innerHtml+="</td>";
+    }
     innerHtml+="</tr>";
     $('.tb_cont').append(innerHtml);
   }

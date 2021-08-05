@@ -1,3 +1,6 @@
+body{
+  margin: 0px;
+}
 table {
   border-top: 1px solid #bfbfbf;
   border-bottom: 1px solid #bfbfbf;
@@ -111,4 +114,19 @@ table{
 }
 .hide{
   display:none;
+}
+@media ( max-width: 600px ) {
+  div.inner{
+    width:95%;
+  }
+  div.item{
+    padding-left:10px;
+    padding-right: 10px;
+  }
+  table{
+    width:95%;
+  }
+  textarea{
+    width:92%;
+  }
 }
